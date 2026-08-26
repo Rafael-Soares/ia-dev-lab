@@ -1,5 +1,5 @@
 ---
-applyTo: "testes/**/*.py"
+applyTo: "tests/**/*.py"
 ---
 
 # Instruções para testes
