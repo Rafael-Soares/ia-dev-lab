@@ -8,6 +8,8 @@ Aplicação web simples para análise de ações brasileiras.
 
 O sistema consultará uma API pública de dados financeiros, obterá dados históricos dos últimos seis meses e apresentará um ranking das ações com melhor desempenho no período.
 
+O desempenho será calculado pela média aritmética dos seis retornos mensais consecutivos, utilizando sete preços de fechamento mensal.
+
 Os resultados possuem finalidade exclusivamente educacional e não constituem recomendação de investimento.
 
 ## Tecnologias
