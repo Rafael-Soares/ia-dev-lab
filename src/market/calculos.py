@@ -19,3 +19,30 @@ def calcular_retorno_medio_mensal(precos: Sequence[float]) -> float:
     ]
 
     return sum(retornos) / len(retornos)
+
+
+def gerar_ranking_acoes(ativos: Sequence[dict[str, object]]) -> list[dict[str, object]]:
+    """Gera o ranking de ativos válidos com base no retorno médio mensal."""
+    ranking: list[dict[str, object]] = []
+
+    for ativo in ativos:
+        ticker = ativo.get("ticker")
+        precos = ativo.get("precos")
+
+        if not isinstance(ticker, str) or not isinstance(precos, Sequence):
+            continue
+
+        try:
+            retorno_medio = calcular_retorno_medio_mensal(precos)
+        except ValueError:
+            continue
+
+        ranking.append(
+            {
+                "ticker": ticker,
+                "retorno_medio_mensal": retorno_medio,
+            }
+        )
+
+    ranking.sort(key=lambda item: item["retorno_medio_mensal"], reverse=True)
+    return ranking
