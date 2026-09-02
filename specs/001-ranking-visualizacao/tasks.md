@@ -2,11 +2,11 @@
 
 ## Phase 1: Testes da lógica de domínio
 
-- [ ] T001 [P] [US1] Adicionar em `tests/test_calculos.py` teste para múltiplos ativos válidos e resultado ordenado do maior para o menor retorno médio mensal.
+- [x] T001 [P] [US1] Adicionar em `tests/test_calculos.py` teste para múltiplos ativos válidos e resultado ordenado do maior para o menor retorno médio mensal.
 
-- [ ] T002 [P] [US1] Adicionar em `tests/test_calculos.py` teste com ativos válidos, inválidos e incompletos, comprovando que os inválidos são ignorados sem bloquear os válidos.
+- [x] T002 [P] [US1] Adicionar em `tests/test_calculos.py` teste com ativos válidos, inválidos e incompletos, comprovando que os inválidos são ignorados sem bloquear os válidos.
 
-- [ ] T003 [P] [US1] Adicionar em `tests/test_calculos.py` teste em que todos os ativos são inválidos ou incompletos, esperando ranking vazio.
+- [x] T003 [P] [US1] Adicionar em `tests/test_calculos.py` teste em que todos os ativos são inválidos ou incompletos, esperando ranking vazio.
 
 **Checkpoint**: os comportamentos esperados do domínio estão definidos por testes antes da implementação.
 
