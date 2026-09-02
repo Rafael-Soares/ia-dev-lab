@@ -12,9 +12,9 @@
 
 ## 2. Dados de demonstração
 
-- [ ] 2.1 Criar um provedor local simples de dados de demonstração com preços mensais controlados para permitir a execução da funcionalidade sem integração com uma API externa.
+- [x] 2.1 Criar um provedor local simples de dados de demonstração com preços mensais controlados para permitir a execução da funcionalidade sem integração com uma API externa.
 
-- [ ] 2.2 Manter os dados de demonstração separados da lógica de cálculo e do ranking, permitindo sua substituição futura por uma fonte externa.
+- [x] 2.2 Manter os dados de demonstração separados da lógica de cálculo e do ranking, permitindo sua substituição futura por uma fonte externa.
 
 ## 3. Visualização do ranking
 
