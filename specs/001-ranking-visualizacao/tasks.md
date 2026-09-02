@@ -18,7 +18,7 @@
 
 - [x] T005 [US1] Ordenar em `src/market/calculos.py` os resultados válidos do maior para o menor retorno médio mensal, retornando ticker e retorno sem armazenar posição como estado do domínio.
 
-- [ ] T006 [P] Criar `src/market/dados_demo.py` com pequeno conjunto controlado de ativos fictícios para demonstração local, mantendo os dados separados da lógica de negócio.
+- [x] T006 [P] Criar `src/market/dados_demo.py` com pequeno conjunto controlado de ativos fictícios para demonstração local, mantendo os dados separados da lógica de negócio.
 
 **Checkpoint**: o domínio gera um ranking ordenado, ignora entradas inválidas e pode ser executado sem fonte externa.
 
