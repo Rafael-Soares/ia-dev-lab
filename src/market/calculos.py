@@ -1,4 +1,4 @@
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from numbers import Real
 
 
@@ -19,3 +19,27 @@ def calcular_retorno_medio_mensal(precos: Sequence[float]) -> float:
     ]
 
     return sum(retornos) / len(retornos)
+
+
+def gerar_ranking(ativos: Mapping[str, Sequence[float]]) -> list[dict[str, float | str]]:
+    """Gera o ranking dos ativos válidos em ordem decrescente de desempenho."""
+    resultados = []
+
+    for ticker, precos in ativos.items():
+        try:
+            retorno = calcular_retorno_medio_mensal(precos)
+        except ValueError:
+            continue
+
+        resultados.append(
+            {
+                "ticker": ticker,
+                "retorno_medio_mensal_percentual": retorno,
+            }
+        )
+
+    return sorted(
+        resultados,
+        key=lambda item: item["retorno_medio_mensal_percentual"],
+        reverse=True,
+    )

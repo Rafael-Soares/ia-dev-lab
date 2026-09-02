@@ -14,9 +14,9 @@
 
 ## Phase 2: Implementação do domínio e dados de demonstração
 
-- [ ] T004 [US1] Implementar em `src/market/calculos.py` a geração do ranking, reutilizando `calcular_retorno_medio_mensal` como única fonte da regra de cálculo e tratando individualmente ativos inválidos.
+- [x] T004 [US1] Implementar em `src/market/calculos.py` a geração do ranking, reutilizando `calcular_retorno_medio_mensal` como única fonte da regra de cálculo e tratando individualmente ativos inválidos.
 
-- [ ] T005 [US1] Ordenar em `src/market/calculos.py` os resultados válidos do maior para o menor retorno médio mensal, retornando ticker e retorno sem armazenar posição como estado do domínio.
+- [x] T005 [US1] Ordenar em `src/market/calculos.py` os resultados válidos do maior para o menor retorno médio mensal, retornando ticker e retorno sem armazenar posição como estado do domínio.
 
 - [ ] T006 [P] Criar `src/market/dados_demo.py` com pequeno conjunto controlado de ativos fictícios para demonstração local, mantendo os dados separados da lógica de negócio.
 
