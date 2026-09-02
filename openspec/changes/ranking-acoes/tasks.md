@@ -18,22 +18,22 @@
 
 ## 3. Visualização do ranking
 
-- [ ] 3.1 Criar ou atualizar a aplicação Flask para disponibilizar uma rota de visualização do ranking utilizando a camada de processamento definida na capability `ranking-acoes`.
+- [x] 3.1 Criar ou atualizar a aplicação Flask para disponibilizar uma rota de visualização do ranking utilizando a camada de processamento definida na capability `ranking-acoes`.
 
-- [ ] 3.2 Criar o template Jinja2 da página de ranking exibindo, para cada resultado, posição, ticker e retorno médio mensal como percentual.
+- [x] 3.2 Criar o template Jinja2 da página de ranking exibindo, para cada resultado, posição, ticker e retorno médio mensal como percentual.
 
-- [ ] 3.3 Preservar na interface a mesma ordem recebida da lógica de ranking.
+- [x] 3.3 Preservar na interface a mesma ordem recebida da lógica de ranking.
 
-- [ ] 3.4 Implementar o estado vazio da página, exibindo uma mensagem clara quando o ranking não possuir resultados e evitando erros não tratados.
+- [x] 3.4 Implementar o estado vazio da página, exibindo uma mensagem clara quando o ranking não possuir resultados e evitando erros não tratados.
 
-- [ ] 3.5 Garantir que um ranking contendo apenas o subconjunto válido dos ativos continue sendo exibido normalmente.
+- [x] 3.5 Garantir que um ranking contendo apenas o subconjunto válido dos ativos continue sendo exibido normalmente.
 
 ## 4. Testes e validação
 
-- [ ] 4.1 Criar testes da camada web para verificar a apresentação dos campos obrigatórios e a ordem dos resultados.
+- [x] 4.1 Criar testes da camada web para verificar a apresentação dos campos obrigatórios e a ordem dos resultados.
 
-- [ ] 4.2 Criar teste para o estado vazio, verificando a mensagem apresentada e a ausência de erro não tratado.
+- [x] 4.2 Criar teste para o estado vazio, verificando a mensagem apresentada e a ausência de erro não tratado.
 
-- [ ] 4.3 Executar `python -m pytest` e confirmar que os testes existentes e os novos testes são aprovados.
+- [x] 4.3 Executar `python -m pytest` e confirmar que os testes existentes e os novos testes são aprovados.
 
-- [ ] 4.4 Conferir a implementação final contra os cenários GIVEN / WHEN / THEN das capabilities `ranking-acoes` e `visualizacao-ranking`.
+- [x] 4.4 Conferir a implementação final contra os cenários GIVEN / WHEN / THEN das capabilities `ranking-acoes` e `visualizacao-ranking`.

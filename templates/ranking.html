@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <title>Ranking de Ações</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <main class="container">
+      <h1>Ranking de Ações</h1>
+
+      {% if ranking %}
+        <table>
+          <thead>
+            <tr>
+              <th>Posição</th>
+              <th>Ticker</th>
+              <th>Retorno médio mensal</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in ranking %}
+              <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ item.ticker }}</td>
+                <td>{{ '%.2f'|format(item.retorno_medio_mensal) }}%</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>Nenhum resultado disponível no ranking no momento.</p>
+      {% endif %}
+    </main>
+  </body>
+</html>

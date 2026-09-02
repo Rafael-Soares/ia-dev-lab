@@ -13,3 +13,5 @@ Durante a revisão do diff foi identificado que a implementação também anteci
 As alterações estavam coerentes com a especificação e não introduziam lógica conflitante, por isso foi decidido mantê-las. Entretanto, a revisão demonstrou que mesmo uma implementação funcionalmente correta pode ultrapassar o limite da tarefa solicitada, reforçando a necessidade de revisão humana do diff antes de aceitar o trabalho do agente.
 
 Também foi confirmado que a função existente `calcular_retorno_medio_mensal` foi reutilizada, evitando duplicação da regra de cálculo financeiro.
+
+Na execução das tarefas 3.1–3.3, o agente declarou não ter avançado para a tarefa 3.4. Entretanto, a revisão do template mostrou que o estado vazio já havia sido implementado por meio de uma mensagem exibida quando o ranking não possui resultados. A alteração estava coerente com a especificação e foi mantida, mas a tarefa permaneceu pendente até que o comportamento fosse validado por teste. O episódio reforçou que o resumo do agente não substitui a inspeção do diff.
