@@ -40,11 +40,11 @@
 
 ## Phase 4: Implementação da interface web
 
-- [ ] T011 [US2] Criar ou atualizar `app.py` com rota `/ranking`, obtendo os dados de demonstração e enviando-os à lógica de domínio antes da renderização.
+- [x] T011 [US2] Criar ou atualizar `app.py` com rota `/ranking`, obtendo os dados de demonstração e enviando-os à lógica de domínio antes da renderização.
 
-- [ ] T012 [US2] Criar `templates/ranking.html` para exibir posição derivada da ordem da lista, ticker e retorno médio mensal em percentual, sem recalcular ou reordenar resultados.
+- [x] T012 [US2] Criar `templates/ranking.html` para exibir posição derivada da ordem da lista, ticker e retorno médio mensal em percentual, sem recalcular ou reordenar resultados.
 
-- [ ] T013 [US2] Implementar em `templates/ranking.html` o estado vazio com mensagem clara quando não houver resultados.
+- [x] T013 [US2] Implementar em `templates/ranking.html` o estado vazio com mensagem clara quando não houver resultados.
 
 **Checkpoint**: a interface consome o resultado do domínio e não contém regras de negócio.
 
