@@ -52,6 +52,6 @@
 
 ## Phase 5: Verificação e aceitação
 
-- [ ] T014 Executar `python -m pytest` e confirmar aprovação conjunta dos testes existentes e novos.
+- [x] T014 Executar `python -m pytest` e confirmar aprovação conjunta dos testes existentes e novos.
 
-- [ ] T015 Conferir todos os cenários de aceitação da especificação e realizar a verificação final de conformidade com a constituição, incluindo revisão humana do diff antes da aceitação.
+- [x] T015 Conferir todos os cenários de aceitação da especificação e realizar a verificação final de conformidade com a constituição, incluindo revisão humana do diff antes da aceitação.
