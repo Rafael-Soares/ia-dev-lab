@@ -132,7 +132,22 @@ O backlog foi reduzido de 25 para 15 tarefas antes da implementação.
 
 ## 5. Desenvolvimento orientado por testes
 
-Uma diferença relevante foi o uso explícito do TDD no fluxo SpecKit.
+
+Essa seção é sustentada diretamente pelo diff. O OpenSpec usa `Sequence[dict]`, enquanto o SpecKit usa `Mapping[str, Sequence[float]]`, e até os nomes dos campos de saída diferem. :contentReference[oaicite:0]{index=0}
+
+Nos dados de demonstração também há uma diferença clara: o OpenSpec gera séries por uma função auxiliar, enquanto o SpecKit usa um dicionário explícito e retorna uma cópia. :contentReference[oaicite:1]{index=1}
+
+Na web, o OpenSpec acrescentou CSS e execução direta por `python app.py`, enquanto o SpecKit ficou mais mínimo. :contentReference[oaicite:2]{index=2} O template SpecKit também usa explicitamente `retorno_medio_mensal_percentual`, enquanto o OpenSpec usava `retorno_medio_mensal`. :contentReference[oaicite:3]{index=3}
+
+E a diferença nos testes ficou bastante concreta: o SpecKit separou ordem, estado vazio e subconjunto válido em testes web distintos e usou uma fixture `client`, enquanto o OpenSpec terminou com uma organização mais compacta. :contentReference[oaicite:4]{index=4}
+
+### Minha conclusão comparativa
+
+Para **este projeto pequeno**, eu colocaria a conclusão assim:
+
+> O OpenSpec apresentou melhor relação entre formalização e simplicidade, produzindo menos artefatos intermediários e permitindo chegar mais rapidamente à implementação. O SpecKit forneceu maior rastreabilidade e governança, principalmente por meio da Constitution, dos artefatos de planejamento e dos ciclos TDD explícitos, mas exigiu maior esforço de revisão e simplificação para evitar excesso de documentação e fragmentação de tarefas. Em ambas as abordagens, a revisão humana foi indispensável para corrigir ambiguidades, controlar escopo e verificar se testes e código realmente comprovavam os requisitos.
+
+Isso não declara uma ferramenta “melhor” universalmente; relaciona o resultado ao tamanho e contexto do experimento.
 
 ### OpenSpec
 
@@ -274,3 +289,19 @@ e diffs produzidos pelo agente.
 A principal diferença observada não foi simplesmente a qualidade final do
 código, mas a forma como cada abordagem estruturou o caminho entre requisito
 e implementação.
+
+## 10. Diferenças concretas na implementação
+
+A comparação direta entre as duas branches mostrou que OpenSpec e SpecKit
+produziram soluções funcionalmente equivalentes, porém com contratos internos
+diferentes.
+
+### Estrutura de entrada do domínio
+
+No OpenSpec, a função de ranking recebe uma sequência de objetos:
+
+```python
+[
+    {"ticker": "AAA", "precos": [...]},
+    {"ticker": "BBB", "precos": [...]},
+]
