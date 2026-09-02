@@ -26,13 +26,13 @@
 
 ## Phase 3: Testes da interface web
 
-- [ ] T007 [P] [US2] Criar `tests/test_app.py` com teste da rota de ranking contendo resultados e verificar posição, ticker e retorno médio mensal em percentual.
+- [x] T007 [P] [US2] Criar `tests/test_app.py` com teste da rota de ranking contendo resultados e verificar posição, ticker e retorno médio mensal em percentual.
 
-- [ ] T008 [P] [US2] Adicionar em `tests/test_app.py` teste comprovando que a interface preserva a ordem da lista produzida pelo domínio.
+- [x] T008 [P] [US2] Adicionar em `tests/test_app.py` teste comprovando que a interface preserva a ordem da lista produzida pelo domínio.
 
-- [ ] T009 [P] [US2] Adicionar em `tests/test_app.py` teste para ranking vazio, verificando mensagem clara e resposta sem erro não tratado.
+- [x] T009 [P] [US2] Adicionar em `tests/test_app.py` teste para ranking vazio, verificando mensagem clara e resposta sem erro não tratado.
 
-- [ ] T010 [P] [US2] Adicionar em `tests/test_app.py` teste para apresentação normal de um subconjunto válido recebido pela interface.
+- [x] T010 [P] [US2] Adicionar em `tests/test_app.py` teste para apresentação normal de um subconjunto válido recebido pela interface.
 
 **Checkpoint**: os critérios de aceitação da camada web estão definidos por testes antes da implementação.
 
