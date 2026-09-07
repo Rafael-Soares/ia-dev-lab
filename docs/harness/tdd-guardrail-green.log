@@ -1,0 +1,18 @@
+
+Guardrail: modo TDD GREEN solicitado.
+Commit anterior contém testes:
+tests/test_calculos.py
+
+Executando a suíte completa antes de permitir o commit...
+.................                                                        [100%]
+17 passed in 0.61s
+
+============================================================
+TDD GREEN VALIDADO PELO GUARDRAIL
+============================================================
+O commit anterior contém testes e a suíte está GREEN.
+Commit de implementação permitido.
+============================================================
+
+[experimento/tdd-filtro-retorno 75fb934] Implementa filtro de retorno mínimo
+ 1 file changed, 13 insertions(+), 1 deletion(-)

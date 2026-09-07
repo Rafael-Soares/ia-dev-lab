@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <title>Ranking de ações</title>
+  </head>
+  <body>
+    {% if ranking %}
+      <table>
+        <thead>
+          <tr>
+            <th>Posição</th>
+            <th>Ticker</th>
+            <th>Retorno médio mensal</th>
+            <th>Tendência</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in ranking %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>{{ item["ticker"] }}</td>
+              <td>{{ "%.2f%%" | format(item["retorno_medio_mensal_percentual"]) }}</td>
+              <td>{{ item["tendencia"] }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Nenhum resultado disponível</p>
+    {% endif %}
+  </body>
+</html>

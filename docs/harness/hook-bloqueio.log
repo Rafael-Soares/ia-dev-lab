@@ -1,0 +1,13 @@
+
+============================================================
+COMMIT BLOQUEADO PELO GUARDRAIL
+============================================================
+Foi detectada alteração em código da aplicação sem alteração
+correspondente na pasta tests/.
+
+Arquivos de produção alterados:
+app.py
+
+Inclua ou atualize um teste antes de realizar o commit.
+============================================================
+

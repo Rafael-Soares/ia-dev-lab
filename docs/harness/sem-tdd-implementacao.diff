@@ -1,0 +1,22 @@
+diff --git a/src/market/calculos.py b/src/market/calculos.py
+index 5816f7a..55bb4ec 100644
+--- a/src/market/calculos.py
++++ b/src/market/calculos.py
+@@ -52,4 +52,14 @@ def gerar_ranking(ativos: Mapping[str, Sequence[float]]) -> list[dict[str, float
+         resultados,
+         key=lambda item: item["retorno_medio_mensal_percentual"],
+         reverse=True,
+-    )
+\ No newline at end of file
++    )
++
++
++def limitar_ranking(
++    ranking: Sequence[dict[str, float | str]], quantidade_maxima: int
++) -> list[dict[str, float | str]]:
++    """Retorna os primeiros itens do ranking até o limite informado."""
++    if quantidade_maxima < 0:
++        raise ValueError("A quantidade máxima deve ser maior ou igual a zero.")
++
++    return list(ranking[:quantidade_maxima])
+\ No newline at end of file

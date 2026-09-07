@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+
+# Guardrail do projeto:
+# bloqueia commits que alteram código da aplicação sem testes.
+#
+# Exceção controlada para ciclo TDD:
+# TDD_GREEN=1 permite um commit de implementação separado quando:
+# 1. o commit imediatamente anterior contém alterações em tests/;
+# 2. a suíte completa de testes passa.
+
+PRODUCTION_CHANGES=$(git diff --cached --name-only --diff-filter=ACMRD \
+  | grep -E '^(src/|app\.py$|templates/|static/)' || true)
+
+TEST_CHANGES=$(git diff --cached --name-only --diff-filter=ACMRD \
+  | grep -E '^tests/' || true)
+
+block_standard_commit() {
+    echo ""
+    echo "============================================================"
+    echo "COMMIT BLOQUEADO PELO GUARDRAIL"
+    echo "============================================================"
+    echo "Foi detectada alteração em código da aplicação sem alteração"
+    echo "correspondente na pasta tests/."
+    echo ""
+    echo "Arquivos de produção alterados:"
+    echo "$PRODUCTION_CHANGES"
+    echo ""
+    echo "Inclua ou atualize um teste antes de realizar o commit."
+    echo ""
+    echo "Se este for o passo GREEN de um ciclo TDD registrado no"
+    echo "commit imediatamente anterior, use explicitamente:"
+    echo "TDD_GREEN=1 git commit ..."
+    echo "============================================================"
+    echo ""
+    exit 1
+}
+
+if [ -n "$PRODUCTION_CHANGES" ] && [ -z "$TEST_CHANGES" ]; then
+
+    if [ "${TDD_GREEN:-0}" = "1" ]; then
+        PREVIOUS_TEST_CHANGES=$(git diff-tree \
+          --no-commit-id \
+          --name-only \
+          -r HEAD \
+          | grep -E '^tests/' || true)
+
+        if [ -z "$PREVIOUS_TEST_CHANGES" ]; then
+            echo ""
+            echo "============================================================"
+            echo "COMMIT TDD GREEN BLOQUEADO"
+            echo "============================================================"
+            echo "O modo TDD_GREEN foi solicitado, mas o commit anterior"
+            echo "não contém alterações em tests/."
+            echo "============================================================"
+            echo ""
+            exit 1
+        fi
+
+        echo ""
+        echo "Guardrail: modo TDD GREEN solicitado."
+        echo "Commit anterior contém testes:"
+        echo "$PREVIOUS_TEST_CHANGES"
+        echo ""
+        echo "Executando a suíte completa antes de permitir o commit..."
+
+        if ! python -m pytest -q; then
+            echo ""
+            echo "============================================================"
+            echo "COMMIT TDD GREEN BLOQUEADO"
+            echo "============================================================"
+            echo "A suíte de testes apresentou falhas."
+            echo "============================================================"
+            echo ""
+            exit 1
+        fi
+
+        echo ""
+        echo "============================================================"
+        echo "TDD GREEN VALIDADO PELO GUARDRAIL"
+        echo "============================================================"
+        echo "O commit anterior contém testes e a suíte está GREEN."
+        echo "Commit de implementação permitido."
+        echo "============================================================"
+        echo ""
+
+        exit 0
+    fi
+
+    block_standard_commit
+fi
+
+exit 0
