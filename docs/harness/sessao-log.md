@@ -284,3 +284,29 @@ Tarefa concluída e parada para revisão humana.
   - Regra aplicada: `> 0 => "POSITIVA"`, `< 0 => "NEGATIVA"`, `== 0 => "NEUTRA"`.
   - Mantive a ordenação do ranking por retorno médio mensal e o comportamento do estado vazio sem alterações relevantes.
   - Não adicionei dependências externas e não fiz commit.
+
+## Etapa 2 — TDD como Guardrail
+
+### Ciclo TDD — Estado RED
+
+**Branch:** `experimento/tdd-filtro-retorno`
+
+**Baseline:** `13abe96`
+
+**Funcionalidade:** filtro do ranking por retorno mínimo.
+
+A primeira solicitação ao agente foi limitada à criação dos testes, sem
+autorização para modificar código de produção.
+
+Foram criados quatro cenários:
+
+- remoção de ativos abaixo do limite;
+- inclusão do ativo exatamente igual ao limite;
+- preservação da ordem original;
+- comportamento com ranking vazio.
+
+A execução dos testes entrou em estado RED porque a função
+`filtrar_ranking_por_retorno_minimo` ainda não existia. Nenhum código de
+produção foi alterado antes desta execução.
+
+**Evidência:** `docs/harness/tdd-red.log`

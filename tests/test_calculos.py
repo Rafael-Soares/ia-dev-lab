@@ -91,3 +91,47 @@ def test_ranking_vazio_quando_todos_ativos_invalidos():
     ranking = calculos.gerar_ranking(ativos)
 
     assert ranking == []
+
+
+def test_filtrar_ranking_por_retorno_minimo_remove_ativos_abaixo_do_limite():
+    ranking = [
+        {"ticker": "ALFA", "retorno_medio_mensal_percentual": 10.0},
+        {"ticker": "BETA", "retorno_medio_mensal_percentual": 4.9},
+        {"ticker": "GAMA", "retorno_medio_mensal_percentual": 7.5},
+    ]
+
+    resultado = calculos.filtrar_ranking_por_retorno_minimo(ranking, 5.0)
+
+    assert [item["ticker"] for item in resultado] == ["ALFA", "GAMA"]
+
+
+def test_filtrar_ranking_por_retorno_minimo_mantem_ativo_no_limite():
+    ranking = [
+        {"ticker": "ALFA", "retorno_medio_mensal_percentual": 5.0},
+    ]
+
+    resultado = calculos.filtrar_ranking_por_retorno_minimo(ranking, 5.0)
+
+    assert resultado == ranking
+
+
+def test_filtrar_ranking_por_retorno_minimo_preserva_ordem_original():
+    ranking = [
+        {"ticker": "PRIMEIRO", "retorno_medio_mensal_percentual": 6.0},
+        {"ticker": "SEGUNDO", "retorno_medio_mensal_percentual": 9.0},
+        {"ticker": "TERCEIRO", "retorno_medio_mensal_percentual": 7.0},
+    ]
+
+    resultado = calculos.filtrar_ranking_por_retorno_minimo(ranking, 6.0)
+
+    assert [item["ticker"] for item in resultado] == [
+        "PRIMEIRO",
+        "SEGUNDO",
+        "TERCEIRO",
+    ]
+
+
+def test_filtrar_ranking_por_retorno_minimo_retorna_lista_vazia_para_ranking_vazio():
+    resultado = calculos.filtrar_ranking_por_retorno_minimo([], 5.0)
+
+    assert resultado == []

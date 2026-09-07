@@ -1,0 +1,56 @@
+.............FFFF                                                        [100%]
+================================== FAILURES ===================================
+___ test_filtrar_ranking_por_retorno_minimo_remove_ativos_abaixo_do_limite ____
+
+    def test_filtrar_ranking_por_retorno_minimo_remove_ativos_abaixo_do_limite():
+        ranking = [
+            {"ticker": "ALFA", "retorno_medio_mensal_percentual": 10.0},
+            {"ticker": "BETA", "retorno_medio_mensal_percentual": 4.9},
+            {"ticker": "GAMA", "retorno_medio_mensal_percentual": 7.5},
+        ]
+    
+>       resultado = calculos.filtrar_ranking_por_retorno_minimo(ranking, 5.0)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'src.market.calculos' has no attribute 'filtrar_ranking_por_retorno_minimo'
+
+tests\test_calculos.py:103: AttributeError
+_______ test_filtrar_ranking_por_retorno_minimo_mantem_ativo_no_limite ________
+
+    def test_filtrar_ranking_por_retorno_minimo_mantem_ativo_no_limite():
+        ranking = [
+            {"ticker": "ALFA", "retorno_medio_mensal_percentual": 5.0},
+        ]
+    
+>       resultado = calculos.filtrar_ranking_por_retorno_minimo(ranking, 5.0)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'src.market.calculos' has no attribute 'filtrar_ranking_por_retorno_minimo'
+
+tests\test_calculos.py:113: AttributeError
+_______ test_filtrar_ranking_por_retorno_minimo_preserva_ordem_original _______
+
+    def test_filtrar_ranking_por_retorno_minimo_preserva_ordem_original():
+        ranking = [
+            {"ticker": "PRIMEIRO", "retorno_medio_mensal_percentual": 6.0},
+            {"ticker": "SEGUNDO", "retorno_medio_mensal_percentual": 9.0},
+            {"ticker": "TERCEIRO", "retorno_medio_mensal_percentual": 7.0},
+        ]
+    
+>       resultado = calculos.filtrar_ranking_por_retorno_minimo(ranking, 6.0)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'src.market.calculos' has no attribute 'filtrar_ranking_por_retorno_minimo'
+
+tests\test_calculos.py:125: AttributeError
+_ test_filtrar_ranking_por_retorno_minimo_retorna_lista_vazia_para_ranking_vazio _
+
+    def test_filtrar_ranking_por_retorno_minimo_retorna_lista_vazia_para_ranking_vazio():
+>       resultado = calculos.filtrar_ranking_por_retorno_minimo([], 5.0)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'src.market.calculos' has no attribute 'filtrar_ranking_por_retorno_minimo'
+
+tests\test_calculos.py:135: AttributeError
+=========================== short test summary info ===========================
+FAILED tests/test_calculos.py::test_filtrar_ranking_por_retorno_minimo_remove_ativos_abaixo_do_limite
+FAILED tests/test_calculos.py::test_filtrar_ranking_por_retorno_minimo_mantem_ativo_no_limite
+FAILED tests/test_calculos.py::test_filtrar_ranking_por_retorno_minimo_preserva_ordem_original
+FAILED tests/test_calculos.py::test_filtrar_ranking_por_retorno_minimo_retorna_lista_vazia_para_ranking_vazio
+4 failed, 13 passed in 2.18s
