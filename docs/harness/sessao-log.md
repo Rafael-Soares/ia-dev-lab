@@ -378,3 +378,24 @@ mantendo a implementação obtida no GREEN.
 
 Dessa forma, a etapa REFACTOR foi utilizada como revisão crítica da solução,
 e não como obrigação de modificar código que já estava simples e adequado.
+
+### Tarefa separada — Desenvolvimento sem TDD
+
+**Branch:** `experimento/sem-tdd-limite-ranking`
+
+Foi solicitada a implementação da função `limitar_ranking` antes da criação
+de qualquer teste novo.
+
+O agente alterou primeiro `src/market/calculos.py` e executou somente a suíte
+preexistente, que apresentou 13 testes aprovados.
+
+A implementação considerou espontaneamente limite zero, limite negativo,
+ranking vazio, limite superior ao tamanho do ranking e preservação da entrada.
+
+Somente após a implementação foram criados sete testes específicos. Todos
+passaram na primeira execução, e a suíte completa apresentou 20 testes
+aprovados. Nenhuma correção posterior no código de produção foi necessária.
+
+Evidências:
+- `docs/harness/sem-tdd-implementacao.diff`
+- `docs/harness/sem-tdd-testes-existentes.log`

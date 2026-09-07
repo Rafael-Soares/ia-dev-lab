@@ -65,3 +65,14 @@ def filtrar_ranking_por_retorno_minimo(
         for item in ranking
         if item["retorno_medio_mensal_percentual"] >= retorno_minimo
     ]
+
+
+def limitar_ranking(
+    ranking: Sequence[dict[str, float | str]],
+    quantidade_maxima: int,
+) -> list[dict[str, float | str]]:
+    """Retorna os primeiros itens do ranking até o limite informado."""
+    if quantidade_maxima < 0:
+        raise ValueError("A quantidade máxima deve ser maior ou igual a zero.")
+
+    return list(ranking[:quantidade_maxima])

@@ -92,7 +92,6 @@ def test_ranking_vazio_quando_todos_ativos_invalidos():
 
     assert ranking == []
 
-
 def test_filtrar_ranking_por_retorno_minimo_remove_ativos_abaixo_do_limite():
     ranking = [
         {"ticker": "ALFA", "retorno_medio_mensal_percentual": 10.0},
@@ -135,3 +134,59 @@ def test_filtrar_ranking_por_retorno_minimo_retorna_lista_vazia_para_ranking_vaz
     resultado = calculos.filtrar_ranking_por_retorno_minimo([], 5.0)
 
     assert resultado == []
+
+
+def test_limitar_ranking_retorna_primeiros_itens_ate_limite():
+    ranking = [{"ticker": "A"}, {"ticker": "B"}, {"ticker": "C"}]
+
+    resultado = calculos.limitar_ranking(ranking, 2)
+
+    assert resultado == [{"ticker": "A"}, {"ticker": "B"}]
+
+
+def test_limitar_ranking_preserva_ordem_original():
+    ranking = [{"ticker": "C"}, {"ticker": "A"}, {"ticker": "B"}]
+
+    resultado = calculos.limitar_ranking(ranking, 3)
+
+    assert [item["ticker"] for item in resultado] == ["C", "A", "B"]
+
+
+def test_limitar_ranking_com_limite_zero_retorna_lista_vazia():
+    ranking = [{"ticker": "A"}]
+
+    resultado = calculos.limitar_ranking(ranking, 0)
+
+    assert resultado == []
+
+
+def test_limitar_ranking_com_limite_negativo_gera_value_error():
+    with pytest.raises(ValueError, match="maior ou igual a zero"):
+        calculos.limitar_ranking([], -1)
+
+
+def test_limitar_ranking_com_limite_maior_que_ranking_retorna_todos():
+    ranking = [{"ticker": "A"}, {"ticker": "B"}]
+
+    resultado = calculos.limitar_ranking(ranking, 5)
+
+    assert resultado == ranking
+
+
+def test_limitar_ranking_vazio_retorna_lista_vazia():
+    resultado = calculos.limitar_ranking([], 3)
+
+    assert resultado == []
+
+
+def test_limitar_ranking_nao_modifica_lista_original():
+    ranking = [{"ticker": "A"}, {"ticker": "B"}, {"ticker": "C"}]
+    ranking_original = ranking.copy()
+
+    resultado = calculos.limitar_ranking(ranking, 2)
+
+    assert ranking == ranking_original
+    assert resultado is not ranking
+
+
+
