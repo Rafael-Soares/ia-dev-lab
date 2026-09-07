@@ -53,3 +53,15 @@ def gerar_ranking(ativos: Mapping[str, Sequence[float]]) -> list[dict[str, float
         key=lambda item: item["retorno_medio_mensal_percentual"],
         reverse=True,
     )
+
+
+def filtrar_ranking_por_retorno_minimo(
+    ranking: Sequence[Mapping[str, float | str]],
+    retorno_minimo: float,
+) -> list[dict[str, float | str]]:
+    """Mantém os ativos que atingem o retorno mínimo, preservando a ordem."""
+    return [
+        dict(item)
+        for item in ranking
+        if item["retorno_medio_mensal_percentual"] >= retorno_minimo
+    ]
