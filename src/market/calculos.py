@@ -2,6 +2,15 @@ from collections.abc import Mapping, Sequence
 from numbers import Real
 
 
+def classificar_tendencia(retorno_medio_mensal: float) -> str:
+    """Classifica a tendência com base no retorno médio mensal."""
+    if retorno_medio_mensal > 0:
+        return "POSITIVA"
+    if retorno_medio_mensal < 0:
+        return "NEGATIVA"
+    return "NEUTRA"
+
+
 def calcular_retorno_medio_mensal(precos: Sequence[float]) -> float:
     """Calcula a média dos retornos percentuais de seis meses."""
     if len(precos) != 7:
@@ -35,6 +44,7 @@ def gerar_ranking(ativos: Mapping[str, Sequence[float]]) -> list[dict[str, float
             {
                 "ticker": ticker,
                 "retorno_medio_mensal_percentual": retorno,
+                "tendencia": classificar_tendencia(retorno),
             }
         )
 

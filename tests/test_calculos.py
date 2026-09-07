@@ -30,6 +30,12 @@ def test_valor_nao_numerico():
         )
 
 
+def test_classificar_tendencia_baseada_no_retorno_medio_mensal():
+    assert calculos.classificar_tendencia(10.0) == "POSITIVA"
+    assert calculos.classificar_tendencia(-5.0) == "NEGATIVA"
+    assert calculos.classificar_tendencia(0.0) == "NEUTRA"
+
+
 def test_ranking_multiplos_ativos_validos():
     ativos = {
         "ALFA": [100, 110, 121, 133.1, 146.41, 161.051, 177.1561],
@@ -43,6 +49,15 @@ def test_ranking_multiplos_ativos_validos():
     assert [
         item["retorno_medio_mensal_percentual"] for item in ranking
     ] == pytest.approx([10.0, 5.0, -5.0])
+    assert [item["tendencia"] for item in ranking] == ["POSITIVA", "POSITIVA", "NEGATIVA"]
+
+
+def test_ranking_com_tendencia_neutra():
+    ativos = {"NEUTRA": [100, 100, 100, 100, 100, 100, 100]}
+
+    ranking = calculos.gerar_ranking(ativos)
+
+    assert ranking == [{"ticker": "NEUTRA", "retorno_medio_mensal_percentual": 0.0, "tendencia": "NEUTRA"}]
 
 
 def test_ranking_ignora_ativos_invalidos_e_incompletos():

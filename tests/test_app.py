@@ -16,10 +16,12 @@ def test_ranking_exibe_resultados_com_campos_obrigatorios(monkeypatch, client):
         {
             "ticker": "ALFA",
             "retorno_medio_mensal_percentual": 10.0,
+            "tendencia": "POSITIVA",
         },
         {
             "ticker": "BETA",
             "retorno_medio_mensal_percentual": 5.0,
+            "tendencia": "POSITIVA",
         },
     ]
 
@@ -33,9 +35,11 @@ def test_ranking_exibe_resultados_com_campos_obrigatorios(monkeypatch, client):
     assert "Posição" in body
     assert "Ticker" in body
     assert "Retorno médio mensal" in body
+    assert "Tendência" in body
 
     assert "ALFA" in body
     assert "10.00%" in body
+    assert "POSITIVA" in body
     assert "BETA" in body
     assert "5.00%" in body
 
@@ -48,14 +52,17 @@ def test_ranking_preserva_ordem_dos_resultados(monkeypatch, client):
         {
             "ticker": "PRIMEIRO",
             "retorno_medio_mensal_percentual": 8.0,
+            "tendencia": "POSITIVA",
         },
         {
             "ticker": "SEGUNDO",
             "retorno_medio_mensal_percentual": 4.0,
+            "tendencia": "POSITIVA",
         },
         {
             "ticker": "TERCEIRO",
             "retorno_medio_mensal_percentual": 1.0,
+            "tendencia": "POSITIVA",
         },
     ]
 
@@ -88,10 +95,12 @@ def test_ranking_exibe_subconjunto_valido_recebido(monkeypatch, client):
         {
             "ticker": "VALIDO_A",
             "retorno_medio_mensal_percentual": 10.0,
+            "tendencia": "POSITIVA",
         },
         {
             "ticker": "VALIDO_B",
             "retorno_medio_mensal_percentual": 5.0,
+            "tendencia": "POSITIVA",
         },
     ]
 

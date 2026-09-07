@@ -12,6 +12,7 @@
             <th>Posição</th>
             <th>Ticker</th>
             <th>Retorno médio mensal</th>
+            <th>Tendência</th>
           </tr>
         </thead>
         <tbody>
@@ -20,6 +21,7 @@
               <td>{{ loop.index }}</td>
               <td>{{ item["ticker"] }}</td>
               <td>{{ "%.2f%%" | format(item["retorno_medio_mensal_percentual"]) }}</td>
+              <td>{{ item["tendencia"] }}</td>
             </tr>
           {% endfor %}
         </tbody>
