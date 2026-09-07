@@ -356,3 +356,25 @@ Evidências:
 - `docs/harness/tdd-guardrail-bloqueio.log`
 - `docs/harness/tdd-guardrail-green.log`
 - `docs/harness/tdd-green.log`
+
+### Ciclo TDD — REFACTOR
+
+Após atingir o estado GREEN, foi realizada uma revisão específica da
+implementação de `filtrar_ranking_por_retorno_minimo` e dos testes associados,
+buscando melhorias de clareza, simplicidade, duplicação, legibilidade,
+tipagem e organização.
+
+O agente concluiu que a implementação já estava suficientemente simples e
+direta e que não havia refatoração que trouxesse ganho real sem introduzir
+complexidade desnecessária.
+
+Também foi avaliada a possibilidade de remover `dict(item)` da implementação,
+mas essa alteração poderia modificar detalhes relacionados à identidade e
+mutabilidade dos objetos retornados, sem benefício relevante para a
+funcionalidade atual.
+
+A decisão humana foi **não realizar alterações adicionais** nesta etapa,
+mantendo a implementação obtida no GREEN.
+
+Dessa forma, a etapa REFACTOR foi utilizada como revisão crítica da solução,
+e não como obrigação de modificar código que já estava simples e adequado.
