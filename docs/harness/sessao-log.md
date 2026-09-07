@@ -284,3 +284,24 @@ Tarefa concluída e parada para revisão humana.
   - Regra aplicada: `> 0 => "POSITIVA"`, `< 0 => "NEGATIVA"`, `== 0 => "NEUTRA"`.
   - Mantive a ordenação do ranking por retorno médio mensal e o comportamento do estado vazio sem alterações relevantes.
   - Não adicionei dependências externas e não fiz commit.
+
+### Tarefa separada — Desenvolvimento sem TDD
+
+**Branch:** `experimento/sem-tdd-limite-ranking`
+
+Foi solicitada a implementação da função `limitar_ranking` antes da criação
+de qualquer teste novo.
+
+O agente alterou primeiro `src/market/calculos.py` e executou somente a suíte
+preexistente, que apresentou 13 testes aprovados.
+
+A implementação considerou espontaneamente limite zero, limite negativo,
+ranking vazio, limite superior ao tamanho do ranking e preservação da entrada.
+
+Somente após a implementação foram criados sete testes específicos. Todos
+passaram na primeira execução, e a suíte completa apresentou 20 testes
+aprovados. Nenhuma correção posterior no código de produção foi necessária.
+
+Evidências:
+- `docs/harness/sem-tdd-implementacao.diff`
+- `docs/harness/sem-tdd-testes-existentes.log`

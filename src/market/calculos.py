@@ -53,3 +53,13 @@ def gerar_ranking(ativos: Mapping[str, Sequence[float]]) -> list[dict[str, float
         key=lambda item: item["retorno_medio_mensal_percentual"],
         reverse=True,
     )
+
+
+def limitar_ranking(
+    ranking: Sequence[dict[str, float | str]], quantidade_maxima: int
+) -> list[dict[str, float | str]]:
+    """Retorna os primeiros itens do ranking até o limite informado."""
+    if quantidade_maxima < 0:
+        raise ValueError("A quantidade máxima deve ser maior ou igual a zero.")
+
+    return list(ranking[:quantidade_maxima])
