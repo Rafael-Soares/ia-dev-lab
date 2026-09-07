@@ -310,3 +310,49 @@ A execução dos testes entrou em estado RED porque a função
 produção foi alterado antes desta execução.
 
 **Evidência:** `docs/harness/tdd-red.log`
+
+### Ciclo TDD — Estado GREEN
+
+Após registrar os testes em estado RED, foi solicitado ao agente que
+implementasse apenas o código mínimo necessário para fazê-los passar.
+
+Foi adicionada a função `filtrar_ranking_por_retorno_minimo` em
+`src/market/calculos.py`.
+
+Nenhum teste existente foi alterado durante a implementação.
+
+**Testes de domínio:** 13 aprovados.  
+**Suíte completa:** 17 aprovados.
+
+O estado GREEN foi atingido mantendo os mesmos testes que haviam sido
+registrados previamente no estado RED.
+
+**Evidência:** `docs/harness/tdd-green.log`
+
+### Interação entre TDD e o guardrail
+
+Ao tentar registrar o estado GREEN em um commit separado, o guardrail criado
+na Etapa 1 bloqueou inicialmente a implementação porque não havia alteração
+em `tests/` no mesmo commit.
+
+Entretanto, os testes haviam sido criados propositalmente no commit anterior,
+seguindo o ciclo TDD. A verificação do histórico confirmou que o commit
+`226cbbb` continha `tests/test_calculos.py`.
+
+Esse comportamento mostrou uma limitação da primeira versão do controle:
+ela verificava somente os arquivos preparados para o commit atual e não
+considerava um fluxo RED → GREEN registrado em commits separados.
+
+O hook foi então ajustado para permitir um modo explícito `TDD_GREEN=1`.
+Nesse modo, o controle somente permite uma alteração de produção sem testes
+no mesmo commit quando o commit anterior contém alterações em `tests/` e
+quando a suíte completa é executada com sucesso.
+
+O novo comportamento foi testado na implementação do filtro por retorno
+mínimo. A suíte apresentou `17 passed` e somente depois disso o hook permitiu
+o commit GREEN.
+
+Evidências:
+- `docs/harness/tdd-guardrail-bloqueio.log`
+- `docs/harness/tdd-guardrail-green.log`
+- `docs/harness/tdd-green.log`
