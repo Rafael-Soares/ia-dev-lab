@@ -1,3 +1,10 @@
+## Execução 1 — Autonomia controlada
+- **Tempo total:** 3 minutos
+- **Aprovações manuais:** 5
+- **Sensação de controle:** 3/5  
+- **Risco percebido:** 3/5
+ **Testes ao final:** 15 aprovados
+
 ## Execução 2 — Autonomia alta
 
 - **Tempo:** 5 minutos
